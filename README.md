@@ -154,18 +154,26 @@ Develop a web-based app for adsorption energy prediction
 
 Integrate ML with DFT pipelines for hybrid, high-accuracy workflows
 
-🏁 Final Note
+Conclusion
 
-The project now has:
+This project demonstrates that advanced ML models—especially XGBoost—can reliably predict adsorption energies with high accuracy.
+Such models significantly reduce computational cost and accelerate research in:
 
-✔ Baseline Models
-✔ Advanced Models
-✔ Evaluation Metrics
-✔ Saved Models
-✔ Visualizations
-✔ Clean Repository Structure
-✔ Ready-to-Extend Framework for Research
+Surface science
 
-You can now confidently present this as a research-grade ML project in materials science.
+Catalysis
 
+Interface engineering
+
+Material discovery
+
+Future Work
+
+Extend dataset to multi-element alloy surfaces
+
+Integrate Graph Neural Networks (GNNs) for atomic-level representation
+
+Build hybrid DFT + ML pipelines
+
+Deploy as a web-based prediction tool
 
