@@ -60,12 +60,12 @@ Neural Network (MLPRegressor)
 
 These models are more powerful than classical ML techniques and can capture complex nonlinear relationships in the adsorption dataset.
 
-📊 ADVANCED MODEL RESULTS
-Model	MAE ↓	RMSE ↓	R² ↑
-XGBoost	0.55	0.93	0.81
-LightGBM	1.05	1.56	0.46
-CatBoost	0.62	0.95	0.79
-Neural Network	0.61	0.97	0.79
+Model	MAE ↓	RMSE ↓	R² ↑	Performance Summary
+XGBoost	0.554	0.930	0.809	Best overall model — excellent fit, low error, high R² (≈81% variance explained).
+CatBoost	0.618	0.953	0.800	Very close second; strong predictive power, slightly higher error than XGBoost.
+Neural Network (MLP)	0.611	0.974	0.791	Performs decently but slightly less stable; might improve with tuning or deeper layers.
+LightGBM	1.054	1.560	0.463	Underperformed — possibly due to insufficient parameter tuning or sensitivity to small dataset size.
+
 ✔ Best Advanced Model: XGBoost
 
 XGBoost outperformed all other models because:
