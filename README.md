@@ -1,58 +1,39 @@
-📘 Applications of Machine Learning in Surfaces and Interfaces
-🚀 PROJECT OVERVIEW
+PROJECT OVERVIEW
 
-This project applies Machine Learning (ML) techniques to predict adsorption energy of different adsorbates on metal surfaces.
-Understanding adsorption behavior is crucial for:
+This project applies Machine Learning (ML) techniques to predict adsorption energy of different adsorbates on metal surfaces. Understanding adsorption behavior is critical for catalysis, surface chemistry, and material design.
 
-Catalysis
+🔥BASELINE MODELS
 
-Surface chemistry
+We trained baseline ML models using structural and chemical features to estimate adsorption energy, and compared their performance.
 
-Material design
+MODELS TRAINED
 
-🔥 BASELINE MODELS
+We trained and evaluated four baseline models:
 
-Baseline ML models were trained using structural and chemical features to estimate adsorption energy and compare performance.
+Linear Regression Random Forest Regressor Tuned Random Forest (GridSearchCV) Gradient Boosting Regressor
 
-Models Trained
+EVALUATION METRICS
 
-Linear Regression
-
-Random Forest Regressor
-
-Tuned Random Forest (GridSearchCV)
-
-Gradient Boosting Regressor
-
-📊 BASELINE MODEL EVALUATION METRICS
 Model	MAE ↓	RMSE ↓	R² ↑
 Linear Regression	~0.48	~0.71	~0.88
 Random Forest	~0.44	~0.77	~0.86
 Tuned Random Forest	~0.45	~0.78	~0.86
 Gradient Boosting	~0.68	~0.91	~0.81
+Linear Regression and Random Forest gave the best balance of accuracy and simplicity
 
-✔ Linear Regression and Random Forest gave the best balance of accuracy and simplicity.
-
-🧪 TEST THE SAVED BASELINE MODEL
-import joblib
-import pandas as pd
+TEST THE SAVED MODEL: import joblib import pandas as pd
 
 model = joblib.load("models/best_model.pkl")
 
-demo = pd.DataFrame([{
-    "Element": "Cu",
-    "Adsorbate Smiles": "O=O",
-    "h": 1, "k": 1, "l": 1,
-    "Surface Shift": 0
-}])
+demo = pd.DataFrame([{ "Element": "Cu", "Adsorbate Smiles": "O=O", "h": 1, "k": 1, "l": 1, "Surface Shift": 0 }])
 
 print("Predicted Energy:", model.predict(demo)[0])
 
-🔥 ADVANCED MODELS
+🔥ADVANCED MODELS
 
-After completing the baseline model, a set of advanced ML models was trained for improved accuracy and generalization.
+After completing the baseline model, we further improved the project by training a set of advanced machine learning models to achieve higher accuracy and stronger generalization capabilities.
 
-Models Implemented
+The following models were implemented:
 
 XGBoost Regressor
 
@@ -62,56 +43,52 @@ CatBoost Regressor
 
 Neural Network (MLPRegressor)
 
-These models capture more complex nonlinear patterns in the adsorption dataset.
+These models are more powerful than classical ML techniques and can capture complex nonlinear relationships in the adsorption dataset.
 
-📊 ADVANCED MODEL EVALUATION METRICS
+EVALUATION METRICS
+
 Model	MAE ↓	RMSE ↓	R² ↑	Performance Summary
-XGBoost	~0.554	~0.930	~0.809	⭐ Best model — excellent fit, low error, high R²
-CatBoost	~0.618	~0.953	~0.800	Strong performance, slightly higher error than XGBoost
-Neural Network (MLP)	~0.611	~0.974	~0.791	Good performance, may improve with tuning
-LightGBM	~1.054	~1.560	~0.463	Underperformed — sensitive to dataset size
+XGBoost	~0.554	~0.930	~0.809	Best overall model — excellent fit, low error, high R² (≈81% variance explained).
+CatBoost	~0.618	~0.953	~0.800	Very close second; strong predictive power, slightly higher error than XGBoost.
+Neural Network(MLP)	~0.611	~0.974	~0.791	Performs decently but slightly less stable; might improve with tuning or deeper layers.
+Light GBM	~1.054	~1.560	~0.463	Underperformed — possibly due to insufficient parameter tuning or sensitivity to small dataset size.
 ✔ Best Advanced Model: XGBoost
 
-Why XGBoost wins:
+XGBoost outperformed all other models because:
 
-Handles nonlinear interactions extremely well
+It handles nonlinearity extremely well
 
 Built-in regularization prevents overfitting
 
-Optimized tree boosting = better accuracy
+Optimized tree-boosting improves accuracy
 
-Robust even with small datasets
+Robust with smaller datasets
 
 📉 VISUALIZATIONS
+
 Predicted vs Actual (XGBoost)
+Add your saved plot here:
 
-(Insert your image)
+Predicted vs Actual - XGBoost
 
-Predicted vs Actual – XGBoost
-
-Advanced Model Comparison (Bar Chart)
-
-(Insert your image)
-
-Advanced Model Comparison
-
+Advanced Model Comparison (Bar Chart) Advanced Model Comparison
 📁 NEW FILES ADDED (Advanced Model Section)
 
-Your repository now includes:
+Inside your repository, the advanced model implementation includes:
 
-src/advanced_models.ipynb → Full advanced model pipeline
+src/advanced_models.ipynb → Jupyter Notebook for full advanced model training
 
-models/best_xgb.pkl → Best model saved
+models/best_xgb.pkl → Best advanced model saved
 
-models/best_cat.pkl → CatBoost model
+models/best_cat.pkl → CatBoost saved model
 
-(Optional) /assets → Plots and visualizations
+(Optional) visualizations inside assets/ folder
 
-This keeps the project organized and scalable.
+This keeps your project structured and scalable.
 
 🏗 WORKFLOW SUMMARY
 
-The complete ML pipeline includes:
+The full ML pipeline now includes:
 
 Dataset Loading & Cleaning
 
@@ -130,17 +107,14 @@ Model Saving
 Visualization & Interpretation
 
 ⚙️ TESTING THE ADVANCED MODEL
-import joblib
-import pandas as pd
+
+You can test the XGBoost model the same way as baseline:
+
+import joblib import pandas as pd
 
 model = joblib.load("models/best_xgb.pkl")
 
-demo = pd.DataFrame([{
-    "Element": "Cu",
-    "Adsorbate Smiles": "O=O",
-    "h": 1, "k": 1, "l": 1,
-    "Surface Shift": 0
-}])
+demo = pd.DataFrame([{ "Element": "Cu", "Adsorbate Smiles": "O=O", "h": 1, "k": 1, "l": 1, "Surface Shift": 0 }])
 
 print("Predicted Energy:", model.predict(demo)[0])
 
@@ -148,18 +122,17 @@ print("Predicted Energy:", model.predict(demo)[0])
 
 Expand dataset to multi-element alloy surfaces
 
-Include DFT-derived physical descriptors
+Add more physical descriptors (DFT-derived, atomic fingerprints)
 
-Apply Graph Neural Networks (GNNs)
+Apply Graph Neural Networks (GNNs) for atomic-level learning
 
-Build a web-based prediction app
+Develop a web-based app for adsorption energy prediction
 
-Integrate DFT + ML hybrid pipelines
+Integrate ML with DFT pipelines for hybrid, high-accuracy workflows
 
-🧾 CONCLUSION
+Conclusion
 
-This project demonstrates that advanced ML models—especially XGBoost—can reliably predict adsorption energies with high accuracy.
-Such models significantly reduce computational cost and accelerate research in:
+This project demonstrates that advanced ML models—especially XGBoost—can reliably predict adsorption energies with high accuracy. Such models significantly reduce computational cost and accelerate research in:
 
 Surface science
 
@@ -167,14 +140,14 @@ Catalysis
 
 Interface engineering
 
-Materials discovery
+Material discovery
 
-🔧 FUTURE WORK
+Future Work
 
 Extend dataset to multi-element alloy surfaces
 
-Integrate GNNs for atomic-level understanding
+Integrate Graph Neural Networks (GNNs) for atomic-level representation
 
-Develop hybrid DFT + ML methodologies
+Build hybrid DFT + ML pipelines
 
-Deploy a web-based prediction tool
+Deploy as a web-based prediction tool
